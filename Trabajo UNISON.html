@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistencia a los Antibióticos | Proyecto Académico</title>
+    <style>
+        /* Variables de colores: Estilo Unison (Azul y Naranja) */
+        :root {
+            --primary-blue: #003366; /* Azul oscuro institucional */
+            --unison-orange: #E67A00; /* Naranja vibrante */
+            --bg-light: #f4f7f6;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Cabecera (Hero Section) */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 40%, var(--unison-orange) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: relative; /* Necesario para posicionar el logo encima */
+        }
+
+        /* --- Estilo para el Logo de Unison --- */
+        .logo-unison {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            width: 140px; 
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco para resaltar el texto negro del logo */
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-unison:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        /* Barra de navegación adhesiva */
+        nav {
+            background-color: var(--white);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--unison-orange);
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Secciones de contenido */
+        section {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--unison-orange);
+            transition: transform 0.2s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        /* Diseño en cuadrícula para tarjetas y contenido con imágenes */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 1.5rem;
+            align-items: start;
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* En celulares, el logo se centra arriba para no tapar el texto */
+            .logo-unison {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 110px;
+                display: block;
+                margin: 0 auto 20px auto;
+            }
+            
+            header {
+                padding: 2.5rem 1rem;
+            }
+        }
+
+        /* Tarjetas de información */
+        .card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+            height: 100%; 
+            box-sizing: border-box;
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* Caja de alerta/dato curioso */
+        .alert {
+            background-color: #fff3e6;
+            color: var(--primary-blue);
+            padding: 1.2rem;
+            border-radius: 6px;
+            border-left: 6px solid var(--unison-orange);
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* --- Estilos para Imágenes --- */
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-with-image {
+             display: flex;
+             flex-direction: column;
+             gap: 20px;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            margin-top: 3rem;
+            border-top: 4px solid var(--unison-orange);
+        }
+
+        footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Integración inteligente del Logo Unison -->
+        <img src="f7.png" alt="Escudo Universidad de Sonora" class="logo-unison">
+        
+        <h1>Resistencia a los Antibióticos</h1>
+        <p>Un desafío global para la salud pública y el laboratorio clínico</p>
+    </header>
+
+    <nav>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#causas">Causas y Propagación</a>
+        <a href="#laboratorio">Rol del Laboratorio</a>
+        <a href="#prevencion">Prevención</a>
+        <a href="#equipo">Proyecto Colaborativo</a>
+    </nav>
+
+    <div class="container">
+        
+        <section id="que-es">
+            <h2>¿Qué son y cómo se vuelven resistentes?</h2>
+            <div class="grid-2">
+                <div>
+                    <p>Los antibióticos son medicamentos que combaten infecciones causadas por bacterias en los seres humanos y los animales. Sin embargo, <strong>la resistencia a los antibióticos</strong> ocurre cuando las bacterias mutan y desarrollan la capacidad de resistir los efectos de estos medicamentos diseñados para destruirlas.</p>
+                    <div class="alert">
+                        <strong>💡 Dato clave de MedlinePlus:</strong> La resistencia a los antimicrobianos no significa que tu cuerpo sea resistente a los medicamentos, sino que <em>las bacterias</em> en sí mismas han desarrollado mecanismos de defensa para sobrevivir.
+                    </div>
+                </div>
+                <!-- Imagen f3 -->
+                <div class="image-container">
+                    <img src="f3.jpeg" alt="Bacterias interactuando con antibióticos" class="img-responsive">
+                </div>
+            </div>
+        </section>
+
+        <section id="causas">
+            <h2>Causas y Consecuencias</h2>
+            <p>La resistencia es un fenómeno natural y evolutivo, pero el comportamiento humano ha acelerado drásticamente este proceso. A continuación, vemos cómo las bacterias desarrollan este "escudo" protector.</p>
+            
+            <!-- Imagen f5 -->
+            <div class="image-container" style="max-width: 600px; margin: 0 auto 2rem auto;">
+                 <img src="f5.jpeg" alt="Representación de una bacteria con escudo resistiendo antibióticos" class="img-responsive">
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>¿Qué acelera la resistencia?</h3>
+                    <!-- Imagen f6 -->
+                    <img src="f6.jpeg" alt="Antibióticos genéricos" class="img-responsive" style="margin-bottom: 15px;">
+                    <ul>
+                        <li>Uso de antibióticos para virus (como resfriados o gripe, donde no sirven).</li>
+                        <li>No completar los tratamientos médicos tal como fueron recetados.</li>
+                        <li>Uso excesivo en la agricultura y ganadería.</li>
+                        <li>Mala higiene que permite la propagación de bacterias resistentes.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Impacto en la Salud Pública</h3>
+                     <!-- Imagen f2 -->
+                    <img src="f2.jpeg" alt="Bacteria venciendo a un antibiótico" class="img-responsive" style="margin-bottom: 15px;">
+                    <ul>
+                        <li>Infecciones que antes eran fáciles de curar ahora pueden ser mortales.</li>
+                        <li>Mayor duración de las hospitalizaciones.</li>
+                        <li>Aumento de los costos médicos.</li>
+                        <li>Dificultad para realizar cirugías complejas de forma segura.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="laboratorio">
+            <h2>El Papel Crítico del Laboratorio Clínico</h2>
+            <div class="grid-2">
+                <div class="content-with-image">
+                     <!-- Imagen f1 -->
+                    <img src="f1.jpeg" alt="Mano con guante sosteniendo placa de Petri con pastillas" class="img-responsive">
+                </div>
+                <div>
+                    <p>Para los profesionales del área de la salud, la detección oportuna es el arma principal. El laboratorio no solo diagnostica, sino que guía el tratamiento médico.</p>
+                    <ul>
+                        <li><strong>Cultivos bacterianos:</strong> Permiten aislar e identificar exactamente qué microorganismo está causando la infección en el paciente.</li>
+                        <li><strong>Pruebas de sensibilidad (Antibiograma):</strong> Es una prueba fundamental que determina a qué antibióticos específicos es vulnerable la bacteria y a cuáles ya es resistente.</li>
+                        <li><strong>Vigilancia epidemiológica:</strong> Los laboratorios reportan cepas altamente resistentes para rastrear brotes a nivel hospitalario y comunitario.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="prevencion">
+            <h2>¿Cómo se puede prevenir?</h2>
+            <div class="grid-2">
+                <div>
+                    <p>Detener la propagación de estas "superbacterias" requiere medidas estrictas tanto del personal de salud como del público en general:</p>
+                    <ul>
+                        <li><strong>Nunca se automedique:</strong> Use antibióticos solo cuando un profesional de la salud certificado se los recete.</li>
+                        <li><strong>Siga las instrucciones:</strong> Tome la dosis exacta y no interrumpa el tratamiento, incluso si ya se siente bien.</li>
+                        <li><strong>No comparta medicamentos:</strong> Nunca tome los antibióticos sobrantes de otra persona.</li>
+                        <li><strong>Prevención básica:</strong> Lave sus manos con frecuencia, mantenga sus vacunas al día y prepare los alimentos de forma higiénica.</li>
+                    </ul>
+                </div>
+                 <!-- Imagen f4 -->
+                <div class="image-container">
+                    <img src="f4.jpeg" alt="Caricatura de bacteria con escudo y sonrisa" class="img-responsive">
+                </div>
+            </div>
+        </section>
+
+        <section id="equipo">
+            <h2>Evidencia de Trabajo Colaborativo</h2>
+            <p>Esta página web fue desarrollada como evidencia de investigación académica, estructuración digital y divulgación científica.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Organización del Proyecto</h3>
+                    <ul>
+                        <li><strong>Investigación:</strong> Recopilación de datos de fuentes gubernamentales y de salud (NIH).</li>
+                        <li><strong>Desarrollo Web:</strong> Estructuración en HTML5, CSS3 y maquetación responsiva integrando elementos visuales temáticos.</li>
+                        <li><strong>Revisión Académica:</strong> Adaptación del contenido para reflejar la importancia del laboratorio clínico.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Referencias Confiables</h3>
+                    <ul>
+                        <li>Institutos Nacionales de la Salud (NIH) - <em>MedlinePlus</em>.</li>
+                        <li>Organización Mundial de la Salud (OMS) - <em>Resistencia a los antimicrobianos</em>.</li>
+                        <li>Centros para el Control y la Prevención de Enfermedades (CDC).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Proyecto Académico Universitario</p>
+        <p><small>Diseño web enfocado en la divulgación científica.</small></p>
+    </footer>
+
+</body>
+</html>
